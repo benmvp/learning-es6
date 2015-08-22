@@ -79,3 +79,17 @@ log(typeof (() => {})); // 'function'
 log(function() { } instanceof Function); // true
 log((() => {}) instanceof Function); // true
 
+
+function generateArrowFunctionReturningLexicalArguments() {
+	// returns an arrow function expression
+	// which itself returns the arguments used
+	// when generating the arrow function
+    return () => arguments;
+}
+
+var arrowFunction = generateArrowFunctionReturningLexicalArguments(5, 'foo', [5,4,3]);
+
+// log arguments object with
+// 5, 'foo', and [5,4,3]
+log(arrowFunction());
+
