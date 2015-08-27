@@ -1,3 +1,5 @@
+'use strict';
+
 function varExample() {
 	var myVar = 7;
 
@@ -41,12 +43,12 @@ function varExample() {
 
 function letExample(value) {
 	if (value) {
-		let letValue = value;
+		var _letValue = value;
 
-		console.log('inside block', letValue);
+		console.log('inside block', _letValue);
 
 		// redeclaration of letValue would be a TypeError
-		// let letValue = 'foo';
+		//let letValue = 'foo';
 	}
 
 	try {
@@ -59,8 +61,7 @@ function letExample(value) {
 		// (or transpiled code) did not faithfully reproduce
 		// how let should work
 		console.log('let not faithfully handled');
-	}
-	catch (e) {
+	} catch (e) {
 		// e is a ReferenceError
 		console.log('letValue not accessible', e);
 	}
@@ -68,3 +69,5 @@ function letExample(value) {
 
 varExample();
 letExample(2);
+
+//# sourceMappingURL=block-scoping-babel.js.map
