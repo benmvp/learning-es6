@@ -1,73 +1,152 @@
 'use strict';
 
-function varExample() {
-	var myVar = 7;
+(function () {
+	'use strict';
 
-	console.log('myVar after declaration', myVar);
+	function simpleExample(value) {
+		if (value) {
+			var varValue = value;
+			var _letValue = value;
 
-	// even though laterVar is defined later on in the function
-	// it is "hoisted" to the beginning of the function &
-	// initialized to undefined. In most C-style languages this would
-	// be an error.
-	console.log('laterVar before declaration', laterVar);
+			console.log('inside block', varValue, _letValue);
+		}
 
-	laterVar = 10;
+		console.log('outside block');
 
-	// image some legitimate conditional
-	if (myVar < 20) {
-		// accidental redefintion of myVar
-		var myVar = 'foo';
-		var innerVar = true;
+		// varValue is available even though it was defined
+		// in if-block because it was "hoisted" to function scope
+		console.log(varValue);
 
-		console.log('myVar inside block', myVar);
+		try {
+			// letValue is a ReferenceError because it
+			// was defined w/in if-block
+			console.log(letValue);
+		} catch (e) {
+			// e is a ReferenceError
+			console.log('letValue not accessible', e);
+		}
 	}
 
-	// since this declaration was "hoisted", it's as if it's no
-	// longer here but at the top of the function
-	var laterVar;
+	function varExample() {
+		var myVar = 7;
 
-	// looking at the code laterVar *should* be undefined,
-	// but it has the value 10 from earlier
-	console.log('laterVar after declaration', laterVar);
+		console.log('myVar after declaration', myVar);
 
-	// we would expect myVar to still be 7
-	// but it was redefined and overwritten
-	// w/in the conditional
-	console.log('myVar outside block', myVar === 7);
+		// even though laterVar is defined later on in the function
+		// it is "hoisted" to the beginning of the function &
+		// initialized to undefined. In most C-style languages this would
+		// be an error.
+		console.log('laterVar before declaration', laterVar);
 
-	// we would expect innerVar to no longer be accessible
-	// since it was defined w/in the if-block, but it was
-	// "hoisted" as well
-	console.log('innerVar outside block', innerVar);
-}
+		laterVar = 10;
 
-function letExample(value) {
-	if (value) {
-		var _letValue = value;
+		// image some legitimate conditional
+		if (myVar < 20) {
+			// accidental redefintion of myVar results
+			// in outer defined myVar being reassigned
+			// to 'foo'
+			var myVar = 'foo';
+			var innerVar = true;
 
-		console.log('inside block', _letValue);
+			console.log('myVar inside block', myVar);
+		}
 
-		// redeclaration of letValue would be a TypeError
-		//let letValue = 'foo';
+		// since this declaration was "hoisted", it's as if it's no
+		// longer here but at the top of the function
+		var laterVar;
+
+		// looking at the code laterVar *should* be undefined,
+		// but it has the value 10 from earlier
+		console.log('laterVar after declaration', laterVar);
+
+		// we would expect myVar to still be 7
+		// but it was redefined and overwritten
+		// w/in the conditional
+		console.log('myVar outside block', myVar === 7);
+
+		// we would expect innerVar to no longer be accessible
+		// since it was defined w/in the if-block, but it was
+		// "hoisted" as well
+		console.log('innerVar outside block', innerVar);
 	}
 
-	try {
-		// Accessing letValue is a ReferenceError because it
-		// was defined w/in if-block
-		console.log(letValue);
+	function letExample(value) {
+		if (value) {
+			var _letValue2 = value;
 
-		// if we get here, it means that the JS engine didn't
-		// throw an exception, which means that the engine
-		// (or transpiled code) did not faithfully reproduce
-		// how let should work
-		console.log('let not faithfully handled');
-	} catch (e) {
-		// e is a ReferenceError
-		console.log('letValue not accessible', e);
+			console.log('inside block', _letValue2);
+
+			// redeclaration of letValue would be a TypeError
+			// let letValue = 'foo';
+		}
+
+		try {
+			// Accessing letValue is a ReferenceError because it
+			// was defined w/in if-block
+			console.log(letValue);
+
+			// if we get here, it means that the JS engine didn't
+			// throw an exception, which means that the engine
+			// (or transpiled code) did not faithfully reproduce
+			// how let should work
+			console.log('let not faithfully handled');
+		} catch (e) {
+			// e is a ReferenceError
+			console.log('letValue not accessible', e);
+		}
 	}
-}
 
-varExample();
-letExample(2);
+	function letShadowExample() {
+		var x = 15;
+
+		if (true) {
+			// this x "shadows" the x defined in the outer scope.
+			// this new x just exists within the scope of the
+			// if-block
+			var _x = 21;
+
+			// x should be 21
+			console.log('x inner block', _x);
+		}
+
+		// x should be 15
+		console.log('x outer block', x);
+	}
+
+	function constExample() {
+		var NAME_KEY = 'name';
+		var UNFROZEN_OBJ_CONST = { key: 'adam', val: 'eve' };
+		var FROZEN_OBJ_CONST = Object.freeze({ key: 'jesus', val: 'paul' });
+
+		// All const declerations must be initialized.
+		// It's a SyntaxError otherwise
+		// const VALUE_KEY;
+
+		// Const variables are read-only, so trying to
+		// reassign is a SyntaxError too
+		// NAME_KEY = 'key';
+
+		// GOTCHA: even though the object is const, you can still
+		// change properties of it. It's the variable
+		// that cannot be reassigned
+		UNFROZEN_OBJ_CONST.key = 'moses';
+
+		// by freezing the object, using ES5 Object.freeze
+		// its properties cannot be changed.
+		// in strict mode this a TypeError. In non-strict
+		// mode the value silently doesn't change
+		// FROZEN_OBJ_CONST.val = 'peter';
+
+		console.log('const value', NAME_KEY);
+		console.log('unfrozen object', UNFROZEN_OBJ_CONST);
+		console.log('frozen object', FROZEN_OBJ_CONST);
+	}
+
+	simpleExample(2);
+	varExample();
+	letExample(2);
+	letShadowExample();
+	constExample();
+})();
 
 //# sourceMappingURL=block-scoping-babel.js.map
