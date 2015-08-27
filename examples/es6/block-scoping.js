@@ -1,21 +1,64 @@
-function simpleExample(value) {
-	if (value) {
-		var varValue = value;
-		let letValue = value;
+function varExample() {
+	var myVar = 7;
 
-		console.log('inside block', varValue, letValue);
+	console.log('myVar after declaration', myVar);
+
+	// even though laterVar is defined later on in the function
+	// it is "hoisted" to the beginning of the function &
+	// initialized to undefined. In most C-style languages this would
+	// be an error.
+	console.log('laterVar before declaration', laterVar);
+
+	laterVar = 10;
+
+	// image some legitimate conditional
+	if (myVar < 20) {
+		// accidental redefintion of myVar
+		var myVar = 'foo';
+		var innerVar = true;
+
+		console.log('myVar inside block', myVar);
 	}
 
-	console.log('outside block');
+	// since this declaration was "hoisted", it's as if it's no
+	// longer here but at the top of the function
+	var laterVar;
 
-	// varValue is available even though it was defined
-	// in if-block because it was "hoisted" to function scope
-	console.log(varValue);
+	// looking at the code laterVar *should* be undefined,
+	// but it has the value 10 from earlier
+	console.log('laterVar after declaration', laterVar);
+
+	// we would expect myVar to still be 7
+	// but it was redefined and overwritten
+	// w/in the conditional
+	console.log('myVar outside block', myVar === 7);
+
+	// we would expect innerVar to no longer be accessible
+	// since it was defined w/in the if-block, but it was
+	// "hoisted" as well
+	console.log('innerVar outside block', innerVar);
+}
+
+function letExample(value) {
+	if (value) {
+		let letValue = value;
+
+		console.log('inside block', letValue);
+
+		// redefined letValue would be a ReferenceError
+		// let letValue = 'foo';
+	}
 
 	try {
-		// letValue is a ReferenceError because it
+		// Accessing letValue is a ReferenceError because it
 		// was defined w/in if-block
 		console.log(letValue);
+
+		// if we get here, it means that the JS engine didn't
+		// throw an exception, which means that the engine
+		// (or transpiled code) did not faithfully reproduce
+		// how let should work
+		console.log('let not faithfully handled');
 	}
 	catch (e) {
 		// e is a ReferenceError
@@ -23,4 +66,5 @@ function simpleExample(value) {
 	}
 }
 
-simpleExample(2);
+varExample();
+letExample(2);
