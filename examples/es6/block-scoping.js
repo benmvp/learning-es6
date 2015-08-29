@@ -2,6 +2,8 @@
 	'use strict';
 
 	function simpleExample(value) {
+		const constValue = value;
+
 		if (value) {
 			var varValue = value;
 			let letValue = value;
@@ -24,6 +26,10 @@
 			// e is a ReferenceError
 			console.log('letValue not accessible', e);
 		}
+
+		// SyntaxError to try and update a variable
+		// declared via const
+		//constValue += 1;
 	}
 
 	function varExample() {
@@ -118,7 +124,7 @@
 		const UNFROZEN_OBJ_CONST = {key: 'adam', val: 'eve'};
 		const FROZEN_OBJ_CONST = Object.freeze({key: 'jesus', val: 'paul'});
 
-		// All const declerations must be initialized.
+		// All const declarations must be initialized.
 		// It's a SyntaxError otherwise
 		// const VALUE_KEY;
 
@@ -182,7 +188,7 @@
 	}
 
 	function callbackLoopVarExample() {
-		let $body = $('body');
+		var $body = $('body');
 
 		for (var i = 0; i < 5; i++) {
 			// create 5 buttons with the index in the name
@@ -190,7 +196,52 @@
 
 			// wire click handler w/ callback using arrow function!
 			$button.click(
+				// BUG! When button is clicked, the value of `i` is 5!
 				() => console.log('var button ' + i + ' clicked!')
+			);
+
+			// add button to the body
+			$body.append($button);
+		}
+	}
+
+	function callbackLoopNamedFunctionExample() {
+		var $body = $('body');
+
+		// Create a named function passing in the loop iteration variable
+		// which creates a unique scope for each iteration so
+		// that the callback function binds to its own variable.
+		var loop = function(index) {
+			// create 5 buttons with the index in the name
+			var $button = $('<button>function ' + index + '</button>');
+
+			// wire click handler w/ callback using arrow function!
+			$button.click(
+				// Fixed! `index` is unique per iteration
+				() => console.log('function button ' + index + ' clicked!')
+			);
+
+			// add button to the body
+			$body.append($button);
+		}
+
+		for (var i = 0; i < 5; i++) {
+			loop(i);
+		} 
+	}
+
+	function callbackLoopLetExample() {
+		let $body = $('body');
+
+		for (let i = 0; i < 5; i++) {
+			// create 5 buttons with the index in the name
+			let $button = $('<button>let ' + i + '</button>');
+
+			// wire click handler w/ callback using arrow function!
+			$button.click(
+				// Fixed! `i` is a different variable declaration for
+				// each iteration of the loop as one would expect!
+				() => console.log('let button ' + i + ' clicked!')
 			);
 
 			// add button to the body
@@ -206,4 +257,6 @@
 	temporalDeadZoneExample();
 	simpleLoopExample();
 	callbackLoopVarExample();
+	callbackLoopNamedFunctionExample();
+	callbackLoopLetExample();
 }) ();
