@@ -142,10 +142,68 @@
 		console.log('frozen object', FROZEN_OBJ_CONST);
 	}
 
+	function temporalDeadZoneExample() {
+		// TDZ for `value` begins
+
+		const func = function() {
+			// Even though this function is defined *before*
+			// `value` in the code, it's not called until after
+			// `value` is declared, so accessing it is OK.
+			console.log('value is: ', value);
+		}
+
+		// TDZ for `value` continues. Accessing `value`
+		// here would be a ReferenceError. Calling `func`
+		// here would cause a ReferenceError.
+
+		// TDZ ends with declaration of `value`
+		let value = 'foo';
+
+		// no longer in TDZ when calling function so now
+		// any access of `value` is ok
+		func();
+	}
+
+	function simpleLoopExample () {
+		for (var i = 0; i < 5; i++) {
+			console.log('i=', i);
+		}
+		for (let j = 0; j < 5; j++) {
+			console.log('j=', j);
+		}
+
+		// i is accessible outside of the for loop
+		// and has the value 5
+		console.log('after i=', i);
+
+		// j is not accessible outside of the for loop
+		// and is a ReferenceError
+		//console.log('after j=', j);
+	}
+
+	function callbackLoopVarExample() {
+		let $body = $('body');
+
+		for (var i = 0; i < 5; i++) {
+			// create 5 buttons with the index in the name
+			var $button = $('<button>var ' + i + '</button>');
+
+			// wire click handler w/ callback using arrow function!
+			$button.click(
+				() => console.log('var button ' + i + ' clicked!')
+			);
+
+			// add button to the body
+			$body.append($button);
+		}
+	}
 
 	simpleExample(2);
 	varExample();
 	letExample(2);
 	letShadowExample();
 	constExample();
+	temporalDeadZoneExample();
+	simpleLoopExample();
+	callbackLoopVarExample();
 }) ();
