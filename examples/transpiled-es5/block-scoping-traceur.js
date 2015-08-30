@@ -98,7 +98,6 @@
       $button.click(function() {
         return console.log('function button ' + index + ' clicked!');
       });
-      l[2] = 'foo';
       $body.append($button);
     };
     for (var i = 0; i < 5; i++) {
@@ -118,6 +117,13 @@
       $__2(i);
     }
   }
+  function parameterExample(values) {
+    {
+      var values$__3 = [];
+      console.log(values$__3);
+    }
+    console.log(values);
+  }
   simpleExample(2);
   varExample();
   letExample(2);
@@ -128,5 +134,6 @@
   callbackLoopVarExample();
   callbackLoopNamedFunctionExample();
   callbackLoopLetExample();
+  parameterExample([2, 3, 16]);
 })();
 //# sourceMappingURL=block-scoping-traceur.js.map

@@ -223,8 +223,6 @@
 				return console.log('function button ' + index + ' clicked!');
 			});
 
-			l[2] = 'foo';
-
 			// add button to the body
 			$body.append($button);
 		};
@@ -258,6 +256,23 @@
 		}
 	}
 
+	function parameterExample(values) {
+		// redeclaration of a function parameter
+		// is a TypeError
+		// let values = [];
+
+		{
+			// this let declaration of `values` shadows
+			// the `values` parameter
+			var _values = [];
+
+			console.log(_values); // []
+		}
+
+		// `values` here is the parameter value
+		console.log(values);
+	}
+
 	simpleExample(2);
 	varExample();
 	letExample(2);
@@ -268,6 +283,7 @@
 	callbackLoopVarExample();
 	callbackLoopNamedFunctionExample();
 	callbackLoopLetExample();
+	parameterExample([2, 3, 16]);
 })();
 
 //# sourceMappingURL=block-scoping-babel.js.map

@@ -249,6 +249,23 @@
 		}
 	}
 
+	function parameterExample(values) {
+		// redeclaration of a function parameter
+		// is a TypeError
+		// let values = [];
+
+		{
+			// this let declaration of `values` shadows
+			// the `values` parameter
+			let values = [];
+
+			console.log(values); // []
+		}
+
+		// `values` here is the parameter value
+		console.log(values);
+	}
+
 	simpleExample(2);
 	varExample();
 	letExample(2);
@@ -259,4 +276,5 @@
 	callbackLoopVarExample();
 	callbackLoopNamedFunctionExample();
 	callbackLoopLetExample();
+	parameterExample([2,3,16]);
 }) ();
