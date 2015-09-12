@@ -1,0 +1,1 @@
+{"version":3,"sources":["../es6/enhanced-object-literals.js"],"names":[],"mappings":";;AAAA,CAAC,YAAW;AACX,aAAY,CAAC;CACb,CAAA,EAAI,CAAC","file":"enhanced-object-literals-babel.js","sourcesContent":["(function() {\n\t'use strict';\n}) ();\n"]}
