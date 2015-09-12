@@ -8,7 +8,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Block-level scoping](#block-level-scoping)
 - [Classes](#classes)
 - [Destructuring](#destructuring)
-- [Enhanced object literals](enhanced-object-literals)
+- [Enhanced object literals](#enhanced-object-literals)
 - [Generators](#generators)
 - [Iterables and iterators](#iterables-and-iterators)
 - [Maps](#maps)
