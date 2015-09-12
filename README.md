@@ -6,18 +6,18 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 
 - [Arrow functions](#arrow-functions)
 - [Block-level scoping](#block-level-scoping)
-- [Destructuring](#destructuring)
-- [Parameter handling](#parameter-handling)
-- [Enhanced object literals](enhanced-object-literals)
-- [Template literals](#template-literals)
-- [Promises](#promises)
-- [Generators](#generators)
 - [Classes](#classes)
-- [Modules](#modules)
-- [Maps](#maps)
-- [Sets](#sets)
+- [Destructuring](#destructuring)
+- [Enhanced object literals](enhanced-object-literals)
+- [Generators](#generators)
 - [Iterables and iterators](#iterables-and-iterators)
+- [Maps](#maps)
+- [Modules](#modules)
 - [New APIs](#new-apis)
+- [Parameter handling](#parameter-handling)
+- [Promises](#promises)
+- [Sets](#sets)
+- [Template literals](#template-literals)
 
 ## Using ES6 right now
 
