@@ -110,6 +110,16 @@ function simpleExample(value) {
 
 **More info:** [Blog post](http://www.benmvp.com/2015/08/learning-es6-block-level-scoping-let-const.html) | [Browser examples](http://benmvp.github.io/learning-es6/#block-scoping) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/block-scoping.js)
 
+
+## Classes
+
+A formalized approach to define classes in JavaScript 
+
+```js
+// code example coming soon
+```
+
+
 ## Destructuring
 
 Destructuring makes it easier to work with objects and arrays in JavaScript. Using a pattern syntax similar to object and array literals, we can poke into data structures and pick out the information we want into variables.
@@ -129,6 +139,61 @@ console.log(third, second, first);
 ```
 
 **More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-destructuring.html) | [Browser examples](http://benmvp.github.io/learning-es6/#destructuring) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/destructuring.js)
+
+
+## Enhanced object literals
+
+Various shorthand syntaxes for building up object literals
+
+```js
+// code example coming soon
+```
+
+
+## Generators
+
+Specialized functions that create iterators using `yield` keyword
+
+```js
+// code example coming soon
+```
+
+
+## Iterables and Iterators
+
+A new ES6 interface for iteration
+
+```js
+// code example coming soon
+```
+
+
+## Maps
+
+Dictionary-type object that can store key/value pairs 
+
+```js
+// code example coming soon
+```
+
+
+## Modules
+
+Provide a modular of organizing and loading JavaScript code 
+
+```js
+// code example coming soon
+```
+
+
+## New APIs
+
+New APIs for existing native JavaScript classes `Math`, `Object`, `RegExp`, etc.
+
+```js
+// code example coming soon
+```
+
 
 ## Parameter handling
 
@@ -203,23 +268,8 @@ ajax(
 );
 ```
 
+**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-parameter-handling.html) | [Browser examples](http://benmvp.github.io/learning-es6/#parameter-handling) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/parameter-handling.js)
 
-## Enhanced object literals
-
-Various shorthand syntaxes for building up object literals
-
-```js
-// code example coming soon
-```
-
-
-## Template literals
-
-Much cleaner way to build up string values
-
-```js
-// code example coming soon
-```
 
 ## Promises
 
@@ -229,37 +279,6 @@ An alternative to callback functions for handling asynchronous operations
 // code example coming soon
 ```
 
-## Generators
-
-Specialized functions that create iterators using `yield` keyword
-
-```js
-// code example coming soon
-```
-
-## Classes
-
-A formalized approach to define classes in JavaScript 
-
-```js
-// code example coming soon
-```
-
-## Modules
-
-Provide a modular of organizing and loading JavaScript code 
-
-```js
-// code example coming soon
-```
-
-## Maps
-
-Dictionary-type object that can store key/value pairs 
-
-```js
-// code example coming soon
-```
 
 ## Sets
 
@@ -269,17 +288,10 @@ A collection object that can store a unique list of values
 // code example coming soon
 ```
 
-## Iterables and Iterators
 
-A new ES6 interface for iteration
+## Template literals
 
-```js
-// code example coming soon
-```
-
-## New APIs
-
-New APIs for existing native JavaScript classes `Math`, `Object`, `RegExp`, etc.
+Much cleaner way to build up string values
 
 ```js
 // code example coming soon
