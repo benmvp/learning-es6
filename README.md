@@ -17,7 +17,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Parameter handling](#parameter-handling)
 - [Promises](#promises)
 - [Sets](#sets)
-- [Template literals](#template-literals)
+- [Template string literals](#template-string-literals)
 
 ## Using ES6 right now
 
@@ -143,11 +143,48 @@ console.log(third, second, first);
 
 ## Enhanced object literals
 
-Various shorthand syntaxes for building up object literals
+ECMAScript 6 makes declaring object literals even more succinct by providing shorthand syntax for initializing properties from variables and defining function methods. It also enables the ability to have computed property keys in an object literal definition.
 
 ```js
-// code example coming soon
+function getCar(make, model, value) {
+    return {
+        // with property value shorthand
+        // syntax, you can omit the property
+        // value if key matches variable
+        // name
+        make,  // same as make: make
+        model, // same as model: model
+        value, // same as value: value
+
+        // computed values now work with
+        // object literals
+        ['make' + make]: true,
+
+        // Method definition shorthand syntax
+        // omits `function` keyword & colon
+        depreciate() {
+            this.value -= 2500;
+        }
+    };
+}
+
+let car = getCar('Kia', 'Sorento', 40000);
+
+// output: {
+//     make: 'Kia',
+//     model:'Sorento',
+//     value: 40000,
+//     depreciate: function()
+// }
+console.log(car);
+
+car.depreciate();
+
+// output: 37500
+console.log(car.value);
 ```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-enhanced-object-literals.html) | [Browser examples](http://benmvp.github.io/learning-es6/#enhanced-object-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/enhanced-object-literals.js)
 
 
 ## Generators
@@ -289,7 +326,7 @@ A collection object that can store a unique list of values
 ```
 
 
-## Template literals
+## Template string literals
 
 Much cleaner way to build up string values
 
