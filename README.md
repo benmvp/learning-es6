@@ -17,7 +17,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Parameter handling](#parameter-handling)
 - [Promises](#promises)
 - [Sets](#sets)
-- [Template string literals](#template-string-literals)
+- [Template literals & tagged templates](#template-literals-tagged-templates)
 
 ## Using ES6 right now
 
@@ -326,7 +326,7 @@ A collection object that can store a unique list of values
 ```
 
 
-## Template string literals
+## Template literals & tagged templates
 
 Much cleaner way to build up string values
 

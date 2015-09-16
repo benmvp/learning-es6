@@ -1,0 +1,1 @@
+{"version":3,"sources":["../es6/template-literals.js"],"names":[],"mappings":"AAAA,AAAC,SAAS,AAAD,CAAG;AACX,aAAW,CAAC;AACb,CAAC,AAAE,EAAC,CAAC","file":"/Users/benmvp/github/benmvp/learning-es6/examples/transpiled-es5/template-literals-traceur.js","sourcesContent":["(function() {\n\t'use strict';\n}) ();\n"]}
