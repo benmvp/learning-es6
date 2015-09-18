@@ -103,4 +103,70 @@
 		// doesn't really matter anymore
 		console.log(html);
 	}
+
+	{ // tagged templates
+		let rawString = String.raw`\t\tThis is not a\n multi-line string!`;
+
+		// instead of tabs and new lines being in the string,
+		// the actual escape characters are in the string
+		// (effectively the backslash is escaped)
+		// output: "\\t\\tThis is not a\\n multi-line string!"
+		console.log(rawString);
+
+		let name = 'Ben',
+
+			// no more double escaping and we can use
+			// interpolation!
+			nameRegExp = RegExp(String.raw`\(${name}\)`);
+
+		console.log(nameRegExp.test('(Ben) Ilegbodu'));
+
+		let firstName = 'Ben',
+			lastName = `Ilegbodu`,
+			interpolate = function(literals, ...substitutions) {
+				// literals = ['Name: ', ', ', '']
+				// substitutions = ['Ilegbodu', 'Ben']
+				// substitutions.length == literals.length - 1
+
+			    let interpolation = '';
+
+			    // loop through based on length of substitutions
+			    // since its shorter by 1
+			    for (let i = 0; i < substitutions.length; i++) {
+			        interpolation += literals[i] + substitutions[i];
+			    }
+
+			    // add the extra literal to the end
+			    interpolation += literals[literals.length - 1];
+
+			    return interpolation;
+			};
+
+		// instead of using the default interpolation
+		// that ES6 offers, we're reimplementing it using
+		// `interpolate` function
+		// output: Name: Ilegbodu, Ben
+		console.log(interpolate`Name: ${lastName}, ${firstName}`);
+
+		let
+			Stringraw = function(literals, ...substitutions) {
+				// literals.raw is an array of raw strings
+			    let rawLiterals = literals.raw,
+			    	interpolation = '';
+
+			    // loop through based on length of substitutions
+			    // since its shorter by 1
+			    for (let i = 0; i < substitutions.length; i++) {
+			        interpolation += rawLiterals[i] + substitutions[i];
+			    }
+
+			    // add the extra raw literal to the end
+			    interpolation += rawLiterals[rawLiterals.length - 1];
+
+			    return interpolation;
+
+			};
+
+		console.log(Stringraw`\t\tThis ${1} is not a\n multi-line string!`);
+	}
 }) ();
