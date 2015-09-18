@@ -1,5 +1,12 @@
 'use strict';
 
+var _templateObject = _taggedTemplateLiteral(['\t\tThis is not a\n multi-line string!'], ['\\t\\tThis is not a\\n multi-line string!']),
+    _templateObject2 = _taggedTemplateLiteral(['(', ')'], ['\\(', '\\)']),
+    _templateObject3 = _taggedTemplateLiteral(['Name: ', ', ', ''], ['Name: ', ', ', '']),
+    _templateObject4 = _taggedTemplateLiteral(['\t\tThis ', ' is not a\n multi-line string!'], ['\\t\\tThis ', ' is not a\\n multi-line string!']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 (function () {
 	'use strict';
 
@@ -96,6 +103,82 @@
 		// The HML output isn't properly aligned, but that
 		// doesn't really matter anymore
 		console.log(html);
+	}
+
+	{
+		// tagged templates
+		var rawString = String.raw(_templateObject);
+
+		// instead of tabs and new lines being in the string,
+		// the actual escape characters are in the string
+		// (effectively the backslash is escaped)
+		// output: "\\t\\tThis is not a\\n multi-line string!"
+		console.log(rawString);
+
+		var _name = 'Ben',
+		   
+
+		// no more double escaping and we can use
+		// interpolation!
+		nameRegExp = RegExp(String.raw(_templateObject2, _name));
+
+		console.log(nameRegExp.test('(Ben) Ilegbodu'));
+
+		var firstName = 'Ben',
+		    lastName = 'Ilegbodu',
+		    interpolate = function interpolate(literals) {
+			// literals = ['Name: ', ', ', '']
+			// substitutions = ['Ilegbodu', 'Ben']
+			// substitutions.length == literals.length - 1
+
+			var interpolation = '';
+
+			// loop through based on length of substitutions
+			// since its shorter by 1
+
+			for (var _len = arguments.length, substitutions = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				substitutions[_key - 1] = arguments[_key];
+			}
+
+			for (var i = 0; i < substitutions.length; i++) {
+				interpolation += literals[i] + substitutions[i];
+			}
+
+			// add the extra literal to the end
+			interpolation += literals[literals.length - 1];
+
+			return interpolation;
+		};
+
+		// instead of using the default interpolation
+		// that ES6 offers, we're reimplementing it using
+		// `interpolate` function
+		// output: Name: Ilegbodu, Ben
+		console.log(interpolate(_templateObject3, lastName, firstName));
+
+		var Stringraw = function Stringraw(literals) {
+			// literals.raw is an array of raw strings
+			var rawLiterals = literals.raw,
+			    interpolation = '';
+
+			// loop through based on length of substitutions
+			// since its shorter by 1
+
+			for (var _len2 = arguments.length, substitutions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+				substitutions[_key2 - 1] = arguments[_key2];
+			}
+
+			for (var i = 0; i < substitutions.length; i++) {
+				interpolation += rawLiterals[i] + substitutions[i];
+			}
+
+			// add the extra raw literal to the end
+			interpolation += rawLiterals[rawLiterals.length - 1];
+
+			return interpolation;
+		};
+
+		console.log(Stringraw(_templateObject4, 1));
 	}
 })();
 

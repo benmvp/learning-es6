@@ -328,8 +328,63 @@ A collection object that can store a unique list of values
 
 ## Template literals & tagged templates
 
-Much cleaner way to build up string values
+ES6 template literals are a brand new type of string literal, delimited by backticks (`` ` ``), that natively support string interpolation (token substitution) and multi-line strings. And because they use backticks as a delimiter, they can include single and double quotes without needing to escape them.
 
 ```js
-// code example coming soon
+let firstName = 'Ben',
+    lastName = `Ilegbodu`;
+
+// Basic template literal is surrounding by
+// backticks so single/double quotes do need
+// to be escaped
+// output: He said, "It's your fault!"
+console.log(`He said, "It's your fault!"`);
+
+// Template literals support interpolation.
+// The values within `firstName` and `lastName`
+// are substituted into where the tokens are
+// output: Name: Ilegbodu, Ben
+console.log(`Name: ${lastName}, ${firstName}`);
+
+// Template literals support multi-line strings
+// output: This is
+//      multi-line text, so that
+//      newline characters are
+//
+//
+//      not needed. All whitespace
+//          is respected, including tabs.
+//
+//
+console.log(`This is
+    multi-line text, so that
+    newline characters are
+
+
+    not needed. All whitespace
+        is respected, including tabs.
+
+`);
 ```
+
+ES6 also supports tagged templates, which are created by prefixing a template literal with the name of a function (called the tag function). That functions receives an array of tokenized string literals plus the substitution values, enabling custom string interpolation or processing.
+
+```js
+function l10n(literals, ...substitutions) {
+    // return interpolated string with
+    // literals translated to native language
+    // and localized to locale
+}
+
+let cost = 10.45,
+    date = new Date('12/1/2016');
+
+// translate and localize
+// The function name (l10n) prefixes the
+// template literal
+// English: Your ticket for 12.1.2016 is $10.45.
+// Spanish: Su billete para el 2016.12.1 es €10,45.
+console.log(l10n`Your ticket for ${date} is {$cost}:c.`);
+```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-template-literals-tagged-templates.html) | [Browser examples](http://benmvp.github.io/learning-es6/#template-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/template-literals.js)
