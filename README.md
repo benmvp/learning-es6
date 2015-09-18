@@ -17,7 +17,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Parameter handling](#parameter-handling)
 - [Promises](#promises)
 - [Sets](#sets)
-- [Template literals & tagged templates](#template-literals-tagged-templates)
+- [Template literals & tagged templates](#template-literals--tagged-templates)
 
 ## Using ES6 right now
 
