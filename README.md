@@ -310,11 +310,33 @@ ajax(
 
 ## Promises
 
-An alternative to callback functions for handling asynchronous operations 
+A promise represents the eventual result of an asynchronous operation. Instead of registering a callback in the call to an async function, the function returns a promise. The caller registers callbacks with the promise to receive either a promise's eventual value from the async operation or the reason why the promise cannot be fulfilled.
 
 ```js
-// code example coming soon
+// Creating a promise wrapper for setTimeout
+function wait(delay = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, delay);
+    });
+}
+
+// Using a promise
+wait(3000).then(() => {
+    console.log('3 seconds have passed!');
+    return wait(2000);
+}).then(() => {
+    console.log('5 seconds have passed!');
+    x++; // ReferenceError triggers `catch`
+}).catch(error => {
+    // output: ReferenceError
+    console.log(error);
+}).then(() => {
+    // simulate `finally` clause
+    console.log('clean up');
+});
 ```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-promises.html) | [Browser examples](http://benmvp.github.io/learning-es6/#promises) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/promises.js)
 
 
 ## Sets
