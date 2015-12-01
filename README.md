@@ -9,6 +9,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Classes](#classes)
 - [Destructuring](#destructuring)
 - [Enhanced object literals](#enhanced-object-literals)
+- [`for-of` loop](#for-of-loop)
 - [Generators](#generators)
 - [Iterables and iterators](#iterables-and-iterators)
 - [Maps](#maps)
@@ -113,7 +114,7 @@ function simpleExample(value) {
 
 ## Classes
 
-A formalized approach to define classes in JavaScript 
+A formalized approach to define classes in JavaScript
 
 ```js
 // code example coming soon
@@ -187,6 +188,21 @@ console.log(car.value);
 **More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-enhanced-object-literals.html) | [Browser examples](http://benmvp.github.io/learning-es6/#enhanced-object-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/enhanced-object-literals.js)
 
 
+## `for-of` loop
+
+The new `for-of` loop introduced with ES6 allows for iterating over an array (or any _iterable_) in a succinct fashion similar to how we can iterate over the keys of an object using `for-in`.
+
+```js
+let list = [8, 3, 11, 9, 6];
+
+for (let value of list) {
+  console.log(value);
+}
+```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/11/learning-es6-for-of-loop.html)
+
+
 ## Generators
 
 Specialized functions that create iterators using `yield` keyword
@@ -207,7 +223,7 @@ A new ES6 interface for iteration
 
 ## Maps
 
-Dictionary-type object that can store key/value pairs 
+Dictionary-type object that can store key/value pairs
 
 ```js
 // code example coming soon
@@ -216,7 +232,7 @@ Dictionary-type object that can store key/value pairs
 
 ## Modules
 
-Provide a modular of organizing and loading JavaScript code 
+Provide a modular of organizing and loading JavaScript code
 
 ```js
 // code example coming soon
