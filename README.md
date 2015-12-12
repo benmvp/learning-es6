@@ -12,12 +12,11 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [`for-of` loop](#for-of-loop)
 - [Generators](#generators)
 - [Iterables and iterators](#iterables-and-iterators)
-- [Maps](#maps)
 - [Modules](#modules)
 - [New APIs](#new-apis)
+- [New Collections](#new-collections)
 - [Parameter handling](#parameter-handling)
 - [Promises](#promises)
-- [Sets](#sets)
 - [Template literals & tagged templates](#template-literals--tagged-templates)
 
 ## Using ES6 right now
@@ -114,11 +113,94 @@ function simpleExample(value) {
 
 ## Classes
 
-A formalized approach to define classes in JavaScript
-
 ```js
-// code example coming soon
+// Define base Note class
+class Note {
+	constructor(id, content, owner) {
+		if (new.target === Note) {
+			throw new Error('Note cannot be directly constructed.')
+		}
+
+		this._id = id;
+		this._content = content;
+		this._owner = owner;
+	}
+
+	static add(...properties) {
+		// `this` will be the class on which `add()` was called
+		// increment counter
+		++this._idCounter;
+
+		let id = `note${this._idCounter}`;
+
+		// construct a new instance of the note passing in the
+		// arguments after the ID. This is so subclasses can
+		// get all of the arguments needed
+		let note = new this(id, ...properties);
+
+		// add note to the lookup by ID
+		this._noteLookup[id] = note;
+
+		return note;
+	}
+
+	static get(id) {
+		return this._noteLookup[id];
+	}
+
+	// read-only
+	get id() { return this._id; }
+
+	get content() { return this._content; }
+	set content(value) { this._content = value; }
+
+	get owner() { return this._owner; }
+	set owner(value) { this._owner = value; }
+
+	toString() {
+		return `ID: ${this._id}
+			Content: ${this._content}
+			Owner: ${this._owner}`;
+	}
+}
+
+// Static "private" properties (not yet supported in class syntax)
+Note._idCounter = -1;
+Note._noteLookup = {};
+
+class ColorNote extends Note {
+	constructor(id, content, owner, color='#ff0000') {
+		// super constructor must be called first!
+		super(id, content, owner);
+		this._color = color;
+	}
+
+	get color() { return this._color; }
+	set color(value) { this._color = value; }
+
+	toString() {  // computed method names are supported
+		// Override `toString()`, but call parent/super version
+		// first
+		return `${super.toString()}
+			Color: ${this._color}`;
+	}
+}
+
+// `add` factory method is defined on `Note`, but accessible
+// on ColorNote subclass
+var colorNote = ColorNote.add('My note', 'benmvp', '#0000ff');
+
+// output: ID: note0
+// Content: My Note
+// Owner: benmvp
+// Color: #0000ff
+console.log(`${colorNote}`);
+
+// output: true
+console.log(Note.get('note0') === colorNote);
 ```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-classes.html) | [Browser examples](http://benmvp.github.io/learning-es6/#classes) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/classes.js)
 
 
 ## Destructuring
@@ -221,15 +303,6 @@ A new ES6 interface for iteration
 ```
 
 
-## Maps
-
-Dictionary-type object that can store key/value pairs
-
-```js
-// code example coming soon
-```
-
-
 ## Modules
 
 Provide a modular of organizing and loading JavaScript code
@@ -242,6 +315,15 @@ Provide a modular of organizing and loading JavaScript code
 ## New APIs
 
 New APIs for existing native JavaScript classes `Math`, `Object`, `RegExp`, etc.
+
+```js
+// code example coming soon
+```
+
+
+# New Collections
+
+New `Map`, `Set`, `WeakMap` & `WeakSet` collections.
 
 ```js
 // code example coming soon
@@ -353,15 +435,6 @@ wait(3000).then(() => {
 ```
 
 **More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-promises.html) | [Browser examples](http://benmvp.github.io/learning-es6/#promises) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/promises.js)
-
-
-## Sets
-
-A collection object that can store a unique list of values
-
-```js
-// code example coming soon
-```
 
 
 ## Template literals & tagged templates
