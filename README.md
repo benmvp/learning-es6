@@ -323,11 +323,56 @@ New APIs for existing native JavaScript classes `Math`, `Object`, `RegExp`, etc.
 
 # New Collections
 
-New `Map`, `Set`, `WeakMap` & `WeakSet` collections.
+ES6 introduces four new efficient collection data structures to mitigate our ab-use of object and array literals.
+
+A `Set` contains a unique set of values of any type:
 
 ```js
-// code example coming soon
+let set = new Set([true, 'Ben', 5]);
+
+set.add(false).add('Ilegbodu').add(25).add(true);
+
+// output: 6
+console.log(set.size);
+
+// output: true
+console.log(set.has('Ben'));
 ```
+
+`Map` provides a mapping of keys of any type to values of any type:
+
+```js
+let map = new Map();
+
+map.set('foo', 'bar');
+map.set(true, 'Ben'); // non-strings can be keys
+
+// output: Ben
+console.log(map.get(true));
+
+// output: 2
+console.log(map.size);
+```
+
+`WeakMap` provides memory leak-free lookup of objects to values of any type:
+
+```js
+let $leftButton = $('#leftButton');
+let domMetadata = new WeakMap();
+
+domMetadata.set($leftButton, {clickCount:0});
+```
+
+`WeakSet` provides memory leak-free collection of unique objects:
+
+```js
+let $leftButton = $('#leftButton');
+let clickedDomNodes = new WeakSet();
+
+clickedDomNodes.add($leftButton);
+```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-new-collections.html)
 
 
 ## Parameter handling
@@ -366,7 +411,7 @@ console.log(join('//', 'one', 'two', 'three'));
 We should no longer need the `apply` function with the new spread operator:
 
 ```js
-function video(width, length, height) {
+function volume(width, length, height) {
     return width * length * height;
 };
 
