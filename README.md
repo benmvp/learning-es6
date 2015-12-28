@@ -11,7 +11,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Enhanced object literals](#enhanced-object-literals)
 - [`for-of` loop](#for-of-loop)
 - [Generators](#generators)
-- [Iterables and iterators](#iterables-and-iterators)
+- [Iterators & iterables](#iterators--iterables)
 - [Modules](#modules)
 - [New APIs](#new-apis)
 - [New Collections](#new-collections)
@@ -294,14 +294,77 @@ Specialized functions that create iterators using `yield` keyword
 ```
 
 
-## Iterables and Iterators
+## Iterators & iterables
 
-A new ES6 interface for iteration
+Iterators provide a simple way to return a (potentially unbounded) sequence of values. The `@@iterator` symbol is used to define default iterators for objects, making them an _iterable_.
 
 ```js
-// code example coming soon
+class MyIterator {
+    constructor() {
+        this.step = 0;
+    }
+    [Symbol.iterator]() {
+        return this;
+    }
+    next() {
+        this.step++;
+
+        if (this.step === 1)
+            return {value: 'Ben'};
+        else if (this.step == 2)
+            return {value: 'Ilegbodu'};
+
+        return {done: true};
+    }
+}
+
+let iter = new MyIterator();
+
+// output: {value: 'Ben'}
+console.log(iter.next());
+
+// output: {value: 'Ilegbodu'}
+console.log(iter.next());
+
+// output: {done: true}
+console.log(iter.next());
+
+// output: {done: true}
+console.log(iter.next());
 ```
 
+The iteration & iterable protocol are based on the following duck-typed interfaces (explained in [TypeScript](http://typescriptlang.org/) for clarity):
+
+```
+interface Iterable {
+    [System.iterator]() : Iterator;
+}
+interface Iterator {
+    next() : IteratorResult;
+    return?(value? : any) : IteratorResult;
+}
+interface IteratorResult {
+    value : any;
+    done : boolean;
+}
+```
+
+All the collection types (`Array`, `Map`, `Set`, etc.) have default iterators designed for easy access to their contents. Strings also have a default iterator so it’s easy to iterate over the code point characters of the string (rather than the code unit characters).
+
+```js
+let str = '😍😎🙏';
+
+for (let char of str) {
+    console.log(char);
+}
+
+// output:
+// 😍
+// 😎
+// 🙏
+```
+
+**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-iterators-iterables.html) | [Browser examples](http://benmvp.github.io/learning-es6/#iterators-iterables) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/iterators-iterables.js)
 
 ## Modules
 
