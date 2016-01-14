@@ -11,7 +11,7 @@ The following, however, is a listing of all of the ES6 features and the basic wa
 - [Enhanced object literals](#enhanced-object-literals)
 - [`for-of` loop](#for-of-loop)
 - [Generators](#generators)
-- [Iterators & iterables](#iterators--iterables)
+- [Iterators & iterables](#iterators-iterables)
 - [Modules](#modules)
 - [New APIs](#new-apis)
 - [New Collections](#new-collections)
@@ -284,14 +284,23 @@ for (let value of list) {
 
 **More info:** [Blog post](http://www.benmvp.com/2015/11/learning-es6-for-of-loop.html)
 
-
 ## Generators
 
-Specialized functions that create iterators using `yield` keyword
+A generator function is a special type of function that when invoked automatically generates a special iterator, called a _generator_. Generator functions are indicated by `function*` and make use of the `yield` operator to indicate the value to return for each successive call to `.next()` on the generator.
 
 ```js
-// code example coming soon
+function* range(start, count) {
+    for (let delta = 0; delta < count; delta++) {
+        yield start + delta;
+    }
+}
+
+for (let teenageYear of range(13, 7)) {
+    console.log(`Teenage angst @ ${teenageYear}!`);
+}
 ```
+
+**More info:** [Blog post](http://www.benmvp.com/2016/01/learning-es6-generators-as-iterators.html) | [Browser examples](http://benmvp.github.io/learning-es6/#generators) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/generators-as-iterators.js)
 
 
 ## Iterators & iterables
@@ -364,7 +373,7 @@ for (let char of str) {
 // 🙏
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-iterators-iterables.html) | [Browser examples](http://benmvp.github.io/learning-es6/#iterators-iterables) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/iterators-iterables.js)
+**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-iterators-iterables.html) | [Browser examples](http://benmvp.github.io/learning-es6/#iterators--iterables) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/iterators-iterables.js)
 
 ## Modules
 
@@ -435,7 +444,7 @@ let clickedDomNodes = new WeakSet();
 clickedDomNodes.add($leftButton);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-new-collections.html)
+**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-new-collections.html) | [Browser examples](http://benmvp.github.io/learning-es6/#new-collections) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/new-collections.js)
 
 
 ## Parameter handling
