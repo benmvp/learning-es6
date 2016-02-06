@@ -1,6 +1,6 @@
 # Learning ES6
 
-ECMAScript 6 is the new version of JavaScript making its way into the interpreters of our modern browsers and servers. The specification is filled with lots of new features; much more than ECMAScript 5 which came out way back in 2009. The [*Learning ES6* blog series](http://www.benmvp.com/2015/08/the-learning-es6-series.html) is walking through all of the major features in significant detail to hopefully provide a deeper level of understanding to features you may have already heard about. This repo contains all the [code examples](http://benmvp.github.io/learning-es6) used throughout the series.
+ECMAScript 6 is the new version of JavaScript making its way into the interpreters of our modern browsers and servers. The specification is filled with lots of new features; much more than ECMAScript 5 which came out way back in 2009. The [*Learning ES6* blog series](/learning-es6-series/) is walking through all of the major features in significant detail to hopefully provide a deeper level of understanding to features you may have already heard about. This repo contains all the [code examples](/learning-es6) used throughout the series.
 
 The following, however, is a listing of all of the ES6 features and the basic way in which the feature is used:
 
@@ -29,7 +29,7 @@ Support for ES6 functionality in JS engines is growing every week and kept up to
 
 As a result, you cannot yet reliable run ES6 natively client- or server-side. Your best bet is compiling your ES6 code down to ES5 using transpilation tools like [Babel](https://babeljs.io/), [Traceur](https://github.com/google/traceur-compiler) or [TypeScript](http://www.typescriptlang.org/) as part of your build process.
 
-**More info:** [Blog post](http://www.benmvp.com/2015/08/learning-es6-using-es6-right-now.html)
+**More info:** [Blog post](/learning-es6-using-es6-right-now/)
 
 ## Arrow functions
 
@@ -69,7 +69,7 @@ var car = {
 };
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/08/learning-es6-arrow-functions.html) | [Browser examples](http://benmvp.github.io/learning-es6/#arrow-functions) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/arrow-functions.js)
+**More info:** [Blog post](/learning-es6-arrow-functions/) | [Browser examples](/learning-es6/#arrow-functions) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/arrow-functions.js)
 
 ## Block-level scoping
 
@@ -108,7 +108,7 @@ function simpleExample(value) {
 }
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/08/learning-es6-block-level-scoping-let-const.html) | [Browser examples](http://benmvp.github.io/learning-es6/#block-scoping) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/block-scoping.js)
+**More info:** [Blog post](/learning-es6-block-level-scoping-let-const/) | [Browser examples](/learning-es6/#block-scoping) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/block-scoping.js)
 
 
 ## Classes
@@ -200,7 +200,7 @@ console.log(`${colorNote}`);
 console.log(Note.get('note0') === colorNote);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-classes.html) | [Browser examples](http://benmvp.github.io/learning-es6/#classes) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/classes.js)
+**More info:** [Blog post](/learning-es6-classes/) | [Browser examples](/learning-es6/#classes) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/classes.js)
 
 
 ## Destructuring
@@ -221,7 +221,7 @@ let [first, second, third] = [8, 4, 100, -5, 20];
 console.log(third, second, first);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-destructuring.html) | [Browser examples](http://benmvp.github.io/learning-es6/#destructuring) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/destructuring.js)
+**More info:** [Blog post](/learning-es6-destructuring/) | [Browser examples](/learning-es6/#destructuring) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/destructuring.js)
 
 
 ## Enhanced object literals
@@ -267,7 +267,7 @@ car.depreciate();
 console.log(car.value);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-enhanced-object-literals.html) | [Browser examples](http://benmvp.github.io/learning-es6/#enhanced-object-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/enhanced-object-literals.js)
+**More info:** [Blog post](/learning-es6-enhanced-object-literals/) | [Browser examples](/learning-es6/#enhanced-object-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/enhanced-object-literals.js)
 
 
 ## `for-of` loop
@@ -282,7 +282,7 @@ for (let value of list) {
 }
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/11/learning-es6-for-of-loop.html)
+**More info:** [Blog post](/learning-es6-for-of-loop/)
 
 ## Generators
 
@@ -300,7 +300,7 @@ for (let teenageYear of range(13, 7)) {
 }
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2016/01/learning-es6-generators-as-iterators.html) | [Browser examples](http://benmvp.github.io/learning-es6/#generators) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/generators-as-iterators.js)
+**More info:** [Blog post](/learning-es6-generators-as-iterators/) | [Browser examples](/learning-es6/#generators) | [Iterators source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/generators-as-iterators.js)
 
 
 ## Iterators & iterables
@@ -373,7 +373,7 @@ for (let char of str) {
 // 🙏
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-iterators-iterables.html) | [Browser examples](http://benmvp.github.io/learning-es6/#iterators--iterables) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/iterators-iterables.js)
+**More info:** [Blog post](/learning-es6-iterators-iterables/) | [Browser examples](/learning-es6/#iterators--iterables) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/iterators-iterables.js)
 
 ## Modules
 
@@ -444,7 +444,7 @@ let clickedDomNodes = new WeakSet();
 clickedDomNodes.add($leftButton);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/12/learning-es6-new-collections.html) | [Browser examples](http://benmvp.github.io/learning-es6/#new-collections) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/new-collections.js)
+**More info:** [Blog post](/learning-es6-new-collections/) | [Browser examples](/learning-es6/#new-collections) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/new-collections.js)
 
 
 ## Parameter handling
@@ -520,7 +520,7 @@ ajax(
 );
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-parameter-handling.html) | [Browser examples](http://benmvp.github.io/learning-es6/#parameter-handling) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/parameter-handling.js)
+**More info:** [Blog post](/learning-es6-parameter-handling/) | [Browser examples](/learning-es6/#parameter-handling) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/parameter-handling.js)
 
 
 ## Promises
@@ -551,7 +551,7 @@ wait(3000).then(() => {
 });
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-promises.html) | [Browser examples](http://benmvp.github.io/learning-es6/#promises) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/promises.js)
+**More info:** [Blog post](/learning-es6-promises/) | [Browser examples](/learning-es6/#promises) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/promises.js)
 
 
 ## Template literals & tagged templates
@@ -615,4 +615,4 @@ let cost = 10.45,
 console.log(l10n`Your ticket for ${date} is {$cost}:c.`);
 ```
 
-**More info:** [Blog post](http://www.benmvp.com/2015/09/learning-es6-template-literals-tagged-templates.html) | [Browser examples](http://benmvp.github.io/learning-es6/#template-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/template-literals.js)
+**More info:** [Blog post](/learning-es6-template-literals-tagged-templates/) | [Browser examples](/learning-es6/#template-literals) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/template-literals.js)
