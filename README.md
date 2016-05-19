@@ -536,19 +536,23 @@ function wait(delay = 0) {
 }
 
 // Using a promise
-wait(3000).then(() => {
-    console.log('3 seconds have passed!');
-    return wait(2000);
-}).then(() => {
-    console.log('5 seconds have passed!');
-    x++; // ReferenceError triggers `catch`
-}).catch(error => {
-    // output: ReferenceError
-    console.log(error);
-}).then(() => {
-    // simulate `finally` clause
-    console.log('clean up');
-});
+wait(3000)
+    .then(() => {
+        console.log('3 seconds have passed!');
+        return wait(2000);
+    })
+    .then(() => {
+    	console.log('5 seconds have passed!');
+    	x++; // ReferenceError triggers `catch`
+    })
+    .catch(error => {
+    	// output: ReferenceError
+    	console.log(error);
+    })
+    .then(() => {
+    	// simulate `finally` clause
+    	console.log('clean up');
+    });
 ```
 
 **More info:** [Blog post](/learning-es6-promises/) | [Browser examples](/learning-es6/#promises) | [Source code](https://github.com/benmvp/learning-es6/blob/master/examples/es6/promises.js)
