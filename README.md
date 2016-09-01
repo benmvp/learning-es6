@@ -257,6 +257,7 @@ let car = getCar('Kia', 'Sorento', 40000);
 //     make: 'Kia',
 //     model:'Sorento',
 //     value: 40000,
+//     makeKia: true,
 //     depreciate: function()
 // }
 console.log(car);
