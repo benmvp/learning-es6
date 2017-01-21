@@ -51,7 +51,7 @@ $("#deleteButton").click(event => {
 // Lexical this binding
 var car = {
     speed: 0,
-    accelerate: function() {
+    accelerate() {
         this.accelerator = setInterval(
             () => {
                 // *this* is the same as it is outside
@@ -62,7 +62,7 @@ var car = {
             100
         );
     },
-    cruise: function() {
+    cruise() {
         clearInterval(this.accelerator);
         console.log('cruising at ' + this.speed + ' mph');
     }
